@@ -9,7 +9,7 @@ interface RegisterFormInputs {
 }
 // 成功後のリダイレクトなどを行う場合
 interface RegisterFormProps {
-  onSuccess?: () => void;
+  onSuccess?: () => void; //成功と失敗のハンドリング
   onError?: (error: any) => void;
   disabled?: boolean;
 }
@@ -26,16 +26,16 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
   } = useForm<RegisterFormInputs>();
   const [error, setError] = React.useState<string | null>(null);
   const [success, setSuccess] = React.useState<boolean>(false);
-  const onSubmit: SubmitHandler<RegisterFormInputs> = async (data) => {
-    try {
-      await createUser({ name: data.name, email: data.email, role: data.role });
+  const onSubmit: SubmitHandler<RegisterFormInputs> = async (data) => { //登録処理、新しい書き方、よく見る方法
+    try { //tryの中で
+      await createUser({ name: data.name, email: data.email, role: data.role }); //分割代入してバグを無くす、｛｝で引数一つ
       setSuccess(true);
       setError(null);
-      if (onSuccess) onSuccess();
+      if (onSuccess) onSuccess();//onSuccessのイベントが発生したら
     } catch (err) {
       setError("ユーザーの登録に失敗しました。" + err);
       setSuccess(false);
-      if (onError) onError(err);
+      if (onError) onError(err);//onErrorが発生したら
     }
   };
   return (
