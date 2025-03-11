@@ -1,5 +1,5 @@
 import React from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, } from "react-hook-form";
 import { TextField, Button, Box, Typography, Alert } from "@mui/material";
 import { createUser } from "../utils/api";
 interface RegisterFormInputs {
