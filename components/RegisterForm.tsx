@@ -24,18 +24,18 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
     handleSubmit,
     formState: { errors },
   } = useForm<RegisterFormInputs>();
-  const [error, setError] = React.useState<string | null>(null);
+  const [error, setError] = React.useState<string | null>(null);//errorがない時はnull
   const [success, setSuccess] = React.useState<boolean>(false);
   const onSubmit: SubmitHandler<RegisterFormInputs> = async (data) => { //登録処理、新しい書き方、よく見る方法
     try { //tryの中で
       await createUser({ name: data.name, email: data.email, role: data.role }); //分割代入してバグを無くす、｛｝で引数一つ
       setSuccess(true);
       setError(null);
-      if (onSuccess) onSuccess();//onSuccessのイベントが発生したら
+      if (onSuccess) onSuccess();//onSuccessのイベントが発生したら実行
     } catch (err) {
-      setError("ユーザーの登録に失敗しました。" + err);
+      setError("ユーザーの登録に失敗しました。" + err);//+errを忘れない
       setSuccess(false);
-      if (onError) onError(err);//onErrorが発生したら
+      if (onError) onError(err);//onErrorが発生したらが発生したら実行
     }
   };
   return (
@@ -43,7 +43,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
       <Typography variant="h5" gutterBottom>
         新規登録
       </Typography>
-      {error && <Alert severity="error">{error}</Alert>}
+      {error && <Alert severity="error">{error}</Alert>}{/*エラーがあるとメッセージを表示 */}
       {success && <Alert severity="success">登録が完了しました。</Alert>}
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* 名前フィールド */}
@@ -52,7 +52,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
           fullWidth
           margin="normal"
           {...register("name", { required: "名前は必須です。" })}
-          error={!!errors.name}
+          error={!!errors.name}//!!でboolean型に変換
           helperText={errors.name?.message}
         />
         {/* メールフィールド */}
