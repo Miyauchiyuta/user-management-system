@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 // TODO: URLパラメータからユーザーIDを取得し、EditUserFormコンポーネントに渡す
 const EditUserPage: React.FC = () => {
 
-  const router = useRouter();
+  const router = useRouter();//画面の遷移に必要
   const id  = useParams<{ id:string }>().id;
 
   const handleSuccess = () => {

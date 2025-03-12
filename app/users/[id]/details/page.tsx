@@ -8,10 +8,10 @@ import { fetchUserById } from "@/utils/api";
 import { User } from "../../../../types/User";
 
 
-const UserDetailsPage: React.FC = () =>{
+const UserDetailsPage: React.FC = () =>{ //useRouterは不要
      const [user, setUser] = useState<User | null>(null);
      const [error, setError] = useState<string | null>(null);
-     const id  = useParams<{ id:string }>().id;
+     const id  = useParams<{ id:string }>().id; //idを受け取る
      const userId: number = Number(id); 
      
       useEffect(() => {
