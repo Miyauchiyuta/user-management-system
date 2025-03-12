@@ -40,7 +40,7 @@ const UsersPage: React.FC = () => {
       <Typography variant="h4" gutterBottom>
         ユーザー一覧
       </Typography>
-      <UserList users={users}/>
+      <UserList initialUsers={users}/>
     </Box>
   );
 }

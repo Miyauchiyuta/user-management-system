@@ -2,12 +2,15 @@ import React from 'react';
 import { Card, CardContent, Typography, CardActions, Button } from '@mui/material';
 import { User } from '../types/User';
 import Link from 'next/link';
+import { Delete } from '@mui/icons-material';
+import DeleteUserButton from './DeleteUserButton';
 
 interface UserCardProps {
   user: User;
+  onDelete: (userId: number) => void; 
 }
 
-const UserCard: React.FC<UserCardProps> = ({ user }) => {
+const UserCard: React.FC<UserCardProps> = ({ user,onDelete }) => {
   return (
     <Card sx={{ minWidth: 275, mb: 2 }}>
       <CardContent>
@@ -24,6 +27,7 @@ const UserCard: React.FC<UserCardProps> = ({ user }) => {
       <CardActions>
         <Button size="small" component={Link} href={`/users/${user.id}/edit`}>編集</Button>
         <Button size="small" color="error">削除</Button>
+        <DeleteUserButton  userId={user.id}  onDelete = {onDelete}/>
       </CardActions>
     </Card>
   );
