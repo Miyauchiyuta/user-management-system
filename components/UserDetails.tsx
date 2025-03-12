@@ -9,9 +9,6 @@ interface USerDetailsProps{
 const UserDetails:React.FC<USerDetailsProps> = ({ user }) => {
     return(
         <Card sx={{ maxWidth: 600, mx: 'auto', mt: 4 }}>
-          <Typography variant="h5" gutterBottom>
-            ユーザー詳細
-          </Typography>
           <Box sx={{ mt: 2 }}>
             <Typography>
               ID: {user.id}
