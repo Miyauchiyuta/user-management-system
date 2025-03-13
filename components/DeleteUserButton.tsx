@@ -1,6 +1,6 @@
 import React from 'react';
 import { deleteUser } from  '../utils/api';
-import { Button } from '@mui/material';
+import CustomButton  from '@/components/part/CustomButton';
 
 
 interface DelteUserButtonProps{
@@ -23,9 +23,9 @@ const DelteUserButton: React.FC<DelteUserButtonProps> = ({userId,onDelete}) => {
     }
 }
         return(
-            <Button onClick={handleDele}>
+            <CustomButton onClick={handleDele}>
                 ユーザーを削除
-            </Button>
+            </CustomButton>
         )
 }
 
