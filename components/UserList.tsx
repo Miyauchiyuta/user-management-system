@@ -1,7 +1,9 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import { User } from '../types/User';
-import UserCard from '../components/UserCard';
 import React, { useState } from 'react';
+import CustomCard from './part/CustomCard';
+import DeleteUserButton from './DeleteUserButton';
+import Link from 'next/link';
 
 interface UserListProps{
     initialUsers:User[];
@@ -18,7 +20,14 @@ const UserList: React.FC<UserListProps> = ({initialUsers}) => {
     return(
         <>
         {users.map(user => (
-            <UserCard key={user.id} user={user} onDelete={handleDelte}/>
+            <CustomCard key={user.id} title={user.name} description = {`役割: ${user.role}\n${user.email}`} 
+            actions ={
+                <>
+                <Button size="small" component={Link} href={`/users/${user.id}/details`}>詳細</Button>
+                <Button size="small" component={Link} href={`/users/${user.id}/edit`}>編集</Button>
+                <DeleteUserButton  userId={user.id}  onDelete = {handleDelte}/>
+                </>
+            }/>
         ))}
         </>
     )
