@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from '@mui/material';
 import { User } from '../types/User';
 import React, { useState } from 'react';
-import CustomCard from './part/CustomCard';
+import CustomCard from './parts/CustomCard';
 import DeleteUserButton from './DeleteUserButton';
 import Link from 'next/link';
 

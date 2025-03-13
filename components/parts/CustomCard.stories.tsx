@@ -5,7 +5,7 @@ import CustomCard from "./CustomCard";
 import CustomButton from "./CustomButton";
 
 const meta : Meta<typeof CustomCard> = {
-  title: "components/part/CustomCard",
+  title: "Components/Parts/CustomCard",
   component: CustomCard,
   tags: ['autodocs'],
 };

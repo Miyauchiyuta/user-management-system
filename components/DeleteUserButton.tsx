@@ -1,6 +1,6 @@
 import React from 'react';
 import { deleteUser } from  '../utils/api';
-import CustomButton  from '@/components/part/CustomButton';
+import CustomButton  from '@/components/parts/CustomButton';
 
 
 interface DelteUserButtonProps{
