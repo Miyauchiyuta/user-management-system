@@ -1,16 +1,18 @@
-import React from 'react';
-import { deleteUser } from  '../utils/api';
-import CustomButton  from '@/components/parts/CustomButton';
+import React, { useState } from 'react';
+import { deleteUser } from '../utils/api';
+import CustomButton from '@/components/parts/CustomButton';
+import CustomModal from './parts/CustomModal';
 
 
-interface DelteUserButtonProps{
+interface DelteUserButtonProps {
     userId: number;
     onDelete: (userId: number) => void; // 再レンダリング⽤
 }
 
-const DelteUserButton: React.FC<DelteUserButtonProps> = ({userId,onDelete}) => {
-    const handleDele = async () => {
-    if (confirm("本当にこのユーザーを削除しますか？")){
+const DelteUserButton: React.FC<DelteUserButtonProps> = ({ userId, onDelete }) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleDelete = async () => {
         try {
             // 論理削除を実行
             await deleteUser(userId);
@@ -21,12 +23,22 @@ const DelteUserButton: React.FC<DelteUserButtonProps> = ({userId,onDelete}) => {
             alert("削除に失敗しました。もう一度お試しください。");
         }
     }
-}
-        return(
-            <CustomButton onClick={handleDele}>
+
+    return (
+        <>
+            <CustomButton onClick={() => setIsModalOpen(true)}>
                 ユーザーを削除
             </CustomButton>
-        )
+            <CustomModal
+                open={isModalOpen}
+                title='ユーザーを削除します'
+                content='本当に削除しますか？'
+                onClose={() => setIsModalOpen(false)}
+                onConfirm={handleDelete}
+            />
+
+        </>
+    )
 }
 
 export default DelteUserButton;
