@@ -17,10 +17,10 @@ const CustomCard: React.FC<CustomCardProps> = ({
   return (
     <Card sx={{ minWidth: 275, mb: 2 }}>
       <CardContent>
-      <Typography variant="h5" gutterBottom>
+      <Typography variant="h3" gutterBottom>
           {title}
         </Typography>
-        <Typography variant="h5">
+        <Typography variant="h6">
           {description}
         </Typography>
       </CardContent>
